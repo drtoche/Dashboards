@@ -1,0 +1,81 @@
+How to Run & Expand
+
+Run Locally: Open your terminal and type python app.py. Visit http://127.0.0.1:8050/ in your browser.
+
+
+
+
+1. Activate the environment:
+ $ conda activate dash
+ 
+2. Navigate to your project folder:
+# from python:
+import os
+os.chdir(os.path.expanduser('~/Python/dashboards/Dash/Debt/'))
+
+# from terminal
+ $ cd /Users/patricktoche/Python/dashboards/Dash/Debt/
+
+3. Run the app:
+	$ python app.py
+
+
+
+
+Deployment to Render.com
+
+
+Follow these steps to get your app live:1. Prepare Your Code (The 3 Essentials)Render needs to know which libraries to install and how to start the web server. Ensure these three things are in your project's root folder:requirements.txt: Create this file and include at least these three lines:Plaintextdash
+pandas
+gunicorn
+The Server Variable: In your main Python file (usually app.py), you must expose the Flask server so Gunicorn can find it. Add this line right after you initialize your app:Pythonapp = Dash(__name__)
+server = app.server  # Render needs this line!
+GitHub: Push your code to a public or private repository.2. Set Up the Render Web ServiceLog in to Render.com and click New+ > Web Service.Connect your GitHub account and select the repository for your Dash app.Configure the following settings:Name: Give your app a unique name (this becomes your URL).Environment: Select Python 3.Region: Choose the one closest to you (e.g., Ohio or Frankfurt).Branch: main (or whichever branch holds your code).3. The Critical Runtime CommandsThis is where most people get stuck. Scroll down to the "Build and Start" section and enter these exact commands:FieldCommand to EnterBuild Commandpip install -r requirements.txtStart Commandgunicorn app:serverNote: If your main file is named main.py instead of app.py, change the start command to gunicorn main:server.4. Deploy and MonitorClick Create Web Service at the bottom.Render will start a terminal log on your screen. You will see it installing your requirements and eventually a message saying Your service is live!.Your URL will look like https://your-app-name.onrender.com.
+
+
+
+First steps after creating a user account on render.com
+
+1. Select "Web Service"
+Why: "Static Sites" are only for basic HTML/CSS (no Python). A Web Service allows Render to run your Python interpreter and the Dash server.
+
+Action: Click the "Build and deploy from a Git repository" button inside the Web Service tile.
+
+2. Connect Your GitHub
+You will see a list of your GitHub repositories.
+
+Find the project you just saved and click Connect.
+
+3. Fill in the "Form" (The Settings)
+Once you click connect, you’ll see the page with the settings we discussed. Here is a quick cheat sheet for those specific fields:
+
+Name: Pick anything (e.g., my-dash-app-2026).
+
+Region: Select Singapore (since it is closest to the Greater Bay Area and will give you the lowest "latency" or lag).
+
+Branch: Leave it as main.
+
+Language: Select Python 3.
+
+Free Plan: Ensure the "Free" instance type is selected ($0/month).
+
+4. The "Build & Start" Commands
+Scroll down to find these two specific boxes. This is the most important part:
+
+Build Command: ```bash
+pip install -r requirements.txt
+
+Start Command: ```bash
+gunicorn app:server
+
+*(Note: If your file is named something else, like `mydash.py`, use `gunicorn mydash:server` instead.)*
+
+5. Final Step: Create
+Click Create Web Service at the bottom of the page.
+
+What to watch for now:
+A black "Logs" screen will appear. You will see lines of text as Render installs your libraries. It usually takes 2–5 minutes the first time.
+
+Important: If it fails, look at the very bottom of the logs. It will usually say something like ModuleNotFoundError: No module named 'pandas'. This just means you forgot to add that library to your requirements.txt file on GitHub.
+
+
