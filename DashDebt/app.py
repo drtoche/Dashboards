@@ -9,6 +9,9 @@ import wbgapi as wb
 # Initialize the App
 app = Dash(__name__)
 
+# to deploy on render.com, add this line
+server = app.server
+
 
 # All countries use the same WDI indicator (db=2); IMF WEO is used as a
 # supplemental source for OECD countries via direct REST API call
