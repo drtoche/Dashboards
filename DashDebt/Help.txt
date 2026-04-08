@@ -24,6 +24,9 @@ os.chdir(os.path.expanduser('~/Python/dashboards/Dash/Debt/'))
 
 Deployment to Render.com
 
+After deployment, go to:
+https://dashboards-1tdl.onrender.com/
+
 
 Follow these steps to get your app live:1. Prepare Your Code (The 3 Essentials)Render needs to know which libraries to install and how to start the web server. Ensure these three things are in your project's root folder:requirements.txt: Create this file and include at least these three lines:Plaintextdash
 pandas
