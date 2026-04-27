@@ -2,6 +2,7 @@ How to Run & Expand
 
 Run Locally: Open your terminal and type python app.py. Visit http://127.0.0.1:8050/ in your browser.
 
+http://127.0.0.1:8050/
 
 
 

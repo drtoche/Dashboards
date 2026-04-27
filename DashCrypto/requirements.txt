@@ -1,0 +1,6 @@
+dash
+gunicorn
+pandas
+dash-bootstrap-components
+requests
+wbgapi
