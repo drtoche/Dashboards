@@ -15,7 +15,7 @@ import os
 os.chdir(os.path.expanduser('~/Python/dashboards/Dash/Debt/'))
 
 # from terminal
- $ cd /Users/patricktoche/Python/dashboards/Dash/Debt/
+ $ cd /Users/patrick/Python/dashboards/Dash/Debt/
 
 3. Run the app:
 	$ python app.py
